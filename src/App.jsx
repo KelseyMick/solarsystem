@@ -3,6 +3,8 @@ import gsap from 'gsap'
 import * as THREE from 'three';
 import vertexShader from './shaders/vertex.glsl?raw'
 import fragmentShader from './shaders/fragment.glsl?raw'
+import sunFragment from './shaders/sunFragment.glsl?raw'
+import sunVertex from './shaders/sunVertex.glsl?raw'
 import atmosphereVertexShader from './shaders/atmosphereVertex.glsl?raw'
 import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl?raw'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -65,6 +67,23 @@ function App() {
 
     // const interaction = new InteractionManager(renderer, scene, camera);
 
+    // Creating the sun
+    const sunMaterial = new THREE.ShaderMaterial({
+      side: THREE.DoubleSide,
+      uniforms: {
+        time: { value: 0 },
+        resolution: { value: new THREE.Vector4() ,}
+      },
+      vertexShader: sunVertex,
+      fragmentShader: sunFragment
+    })
+
+    const sun = new THREE.SphereGeometry(1, 30, 30);
+
+    const sunMesh = new THREE.Mesh(sun, sunMaterial);
+
+    scene.add(sunMesh);
+
     // create a sphere
     const sphere = new THREE.Mesh(new THREE.SphereGeometry(5, 50, 50), new THREE.ShaderMaterial({
       vertexShader,
@@ -99,7 +118,7 @@ function App() {
 
     const group = new THREE.Group()
     group.add(sphere)
-    scene.add(group)
+    // scene.add(group)
 
     sphere.addEventListener('click', () => {
       console.log('hello')
