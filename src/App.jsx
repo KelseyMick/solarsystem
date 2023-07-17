@@ -5,6 +5,8 @@ import vertexShader from './shaders/vertex.glsl?raw'
 import fragmentShader from './shaders/fragment.glsl?raw'
 import sunFragment from './shaders/sunFragment.glsl?raw'
 import sunVertex from './shaders/sunVertex.glsl?raw'
+import sunFragmentLayer from './shaders/sunFragmentLayer.glsl?raw'
+import sunVertexLayer from './shaders/sunVertexLayer.glsl?raw'
 import atmosphereVertexShader from './shaders/atmosphereVertex.glsl?raw'
 import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl?raw'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -16,6 +18,8 @@ function App() {
   let planets = [];
   const scaleVector = new THREE.Vector3();
   let timestamp = 0;
+  let time = 0;
+  let cubeCamera, cubeRenderTarget, materialPerlin;
 
   const controlsRef = useRef(null);
 
@@ -33,7 +37,8 @@ function App() {
       antialias: true,
     })
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.setPixelRatio(window.devicePixelRatio);
+    // renderer.physicallyCorrectLights = true;
     document.body.appendChild(renderer.domElement);
 
     const raycaster = new THREE.Raycaster();
@@ -69,16 +74,20 @@ function App() {
 
     // Creating the sun
     const sunMaterial = new THREE.ShaderMaterial({
+      extensions: {
+        derivatives: "#extension GL_OES_standard_derivatives: enable"
+      },
       side: THREE.DoubleSide,
       uniforms: {
         time: { value: 0 },
-        resolution: { value: new THREE.Vector4() ,}
+        uPerlin: { value: null },
+        resolution: { value: new THREE.Vector4() },
       },
-      vertexShader: sunVertex,
-      fragmentShader: sunFragment
+      vertexShader: sunVertexLayer,
+      fragmentShader: sunFragmentLayer
     })
 
-    const sun = new THREE.SphereGeometry(1, 30, 30);
+    const sun = new THREE.SphereGeometry(5, 50, 50);
 
     const sunMesh = new THREE.Mesh(sun, sunMaterial);
 
@@ -114,7 +123,7 @@ function App() {
     
     atmosphere.scale.set(1.1, 1.1, 1.1)
 
-    scene.add(atmosphere)
+    // scene.add(atmosphere)
 
     const group = new THREE.Group()
     group.add(sphere)
@@ -296,16 +305,58 @@ function App() {
     controlsRef.current.maxDistance = 150;
     controlsRef.current.enableZoom = true;
 
+    // const cubeRenderTarget = new THREE.CubeCamera(0.1, 1000, 256);
+    // cubeRenderTarget.position.copy(sunMesh.position);
+    // cubeRenderTarget.update(renderer, scene);
+    // scene.add(cubeRenderTarget);
+
+    // sunMaterial.envMap = cubeRenderTarget.texture;
+    // sphere.material.envMap = cubeRenderTarget.texture;
+
+    const addTexture = () => {
+      cubeRenderTarget = new THREE.WebGLCubeRenderTarget( 256 );
+
+      cubeCamera = new THREE.CubeCamera(0.1, 10, cubeRenderTarget);
+
+      materialPerlin = new THREE.ShaderMaterial({
+        extensions: {
+          derivatives: "#extension GL_OES_standard_derivatives: enable"
+        },
+        side: THREE.DoubleSide,
+        uniforms: {
+          time: { value: 0 },
+          resolution: { value: new THREE.Vector4() ,}
+        },
+        vertexShader: sunVertex,
+        fragmentShader: sunFragment
+      })
+      
+      const sun = new THREE.SphereGeometry(4.9, 50, 50);
+
+      const perlin = new THREE.Mesh(sun, materialPerlin);
+
+      scene.add(perlin);
+    }
+
+    addTexture()
+
     const render = () => {
       requestAnimationFrame(render);
       renderer.render(scene, camera);
       controlsRef.current.update();
 
+      cubeCamera.update( renderer, scene );
+      sunMaterial.uniforms.uPerlin.value = cubeRenderTarget.texture;
+
+      time += 0.05;
+      sunMaterial.uniforms.time.value = time;
+      materialPerlin.uniforms.time.value = time;
+
       // Update time uniform
       atmosphere.material.uniforms.time.value = clock.getElapsedTime();
       // Update resolution uniform
       atmosphere.material.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
-};
+    };
 
 
     render();
