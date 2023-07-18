@@ -7,6 +7,8 @@ import sunFragment from './shaders/sunFragment.glsl?raw'
 import sunVertex from './shaders/sunVertex.glsl?raw'
 import sunFragmentLayer from './shaders/sunFragmentLayer.glsl?raw'
 import sunVertexLayer from './shaders/sunVertexLayer.glsl?raw'
+import sunVertexGlow from './shaders/sunVertexGlow.glsl?raw';
+import sunFragmentGlow from './shaders/sunFragmentGlow.glsl?raw';
 import atmosphereVertexShader from './shaders/atmosphereVertex.glsl?raw'
 import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl?raw'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -93,6 +95,28 @@ function App() {
 
     scene.add(sunMesh);
 
+    // Sun's glow
+    // const sunGlow = new THREE.ShaderMaterial({
+    //   extensions: {
+    //     derivatives: "#extension GL_OES_standard_derivatives: enable"
+    //   },
+    //   side: THREE.BackSide,
+    //   uniforms: {
+    //     time: { value: 0 },
+    //     uPerlin: { value: null },
+    //     resolution: { value: new THREE.Vector4() },
+    //   },
+    //   // transparent: true,
+    //   vertexShader: sunVertexGlow,
+    //   fragmentShader: sunFragmentGlow
+    // })
+
+    // const sunGlowGeometry = new THREE.SphereGeometry(6.2, 50, 50);
+
+    // const sunGlowMesh = new THREE.Mesh(sunGlowGeometry, sunGlow);
+
+    // scene.add(sunGlowMesh);
+
     // create a sphere
     const sphere = new THREE.Mesh(new THREE.SphereGeometry(5, 50, 50), new THREE.ShaderMaterial({
       vertexShader,
@@ -126,12 +150,8 @@ function App() {
     // scene.add(atmosphere)
 
     const group = new THREE.Group()
-    group.add(sphere)
-    // scene.add(group)
-
-    sphere.addEventListener('click', () => {
-      console.log('hello')
-    })
+    // group.add(sphere)
+    scene.add(group)
 
     // Get rotation speed of planet
     function rotationSpeed(hours) {
@@ -345,7 +365,10 @@ function App() {
       renderer.render(scene, camera);
       controlsRef.current.update();
 
+      
+      sunMesh.visible = false; // Feedback loop fix
       cubeCamera.update( renderer, scene );
+      sunMesh.visible = true;
       sunMaterial.uniforms.uPerlin.value = cubeRenderTarget.texture;
 
       time += 0.05;
@@ -368,7 +391,7 @@ function App() {
     let momentumDecay = 0.95;
 
     const animate = () => {
-      // timestamp = Date.now() * 0.0001;
+      timestamp = Date.now() * 0.0001;
       window.requestAnimationFrame(animate);
 
       labelRenderer.render(scene, camera);
