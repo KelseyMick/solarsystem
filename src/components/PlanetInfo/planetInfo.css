@@ -1,5 +1,7 @@
 .planet-overlay-container {
     display: flex;
+    border: solid white 2px;
+    border-radius: 8px;
   }
 
 .planet-overlay {
@@ -24,5 +26,14 @@
 
   .planet-left-container {
     width: 50%;
+  }
+
+  .close-button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #close-icon {
+    cursor: pointer;
   }
   

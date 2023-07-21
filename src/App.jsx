@@ -3,12 +3,12 @@ import gsap from 'gsap'
 import * as THREE from 'three';
 import vertexShader from './shaders/vertex.glsl?raw'
 import fragmentShader from './shaders/fragment.glsl?raw'
-import sunFragment from './shaders/sunFragment.glsl?raw'
-import sunVertex from './shaders/sunVertex.glsl?raw'
-import sunFragmentLayer from './shaders/sunFragmentLayer.glsl?raw'
-import sunVertexLayer from './shaders/sunVertexLayer.glsl?raw'
-import sunVertexGlow from './shaders/sunVertexGlow.glsl?raw';
-import sunFragmentGlow from './shaders/sunFragmentGlow.glsl?raw';
+import sunFragment from './shaders/sun/sunFragment.glsl?raw'
+import sunVertex from './shaders/sun/sunVertex.glsl?raw'
+import sunFragmentLayer from './shaders/sun/sunFragmentLayer.glsl?raw'
+import sunVertexLayer from './shaders/sun/sunVertexLayer.glsl?raw'
+import sunVertexGlow from './shaders/sun/glow/sunVertexGlow.glsl?raw';
+import sunFragmentGlow from './shaders/sun/glow/sunFragmentGlow.glsl?raw';
 import atmosphereVertexShader from './shaders/atmosphereVertex.glsl?raw'
 import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl?raw'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'

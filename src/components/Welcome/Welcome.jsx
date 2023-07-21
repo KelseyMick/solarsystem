@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './welcome.css'
 
+
 const Welcome = ({ onClose }) => {
     const [visible, setVisible] = useState(true);
 

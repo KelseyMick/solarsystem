@@ -7,6 +7,7 @@ import atmosphereFragmentShader from '../../shaders/atmosphereFragment.glsl?raw'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
 import './PlanetInfo.css';
+import CloseIcon from '@mui/icons-material/Close';
 
 const PlanetOverlay = ({ planet, image, onClose }) => {
   const canvasRef = useRef(null);
@@ -79,6 +80,10 @@ const PlanetOverlay = ({ planet, image, onClose }) => {
           <canvas ref={canvasRef} className="planet-overlay-left" />
         </div>
         <div className="planet-overlay">
+          <div className='close-button-container'>
+            <CloseIcon id='close-icon' onClick={handleClose} />
+          </div>
+            
             <h2>{planet.name}</h2>
             <h2>Length of one day: {planet.data.dayLength}</h2>
             <h2>Gravity: {planet.data.gravity}. (Earth is 9.8 m/s²)</h2>
