@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import vertexShader from '../shaders/vertex.glsl?raw';
-import fragmentShader from '../shaders/fragment.glsl?raw';
-import atmosphereVertexShader from '../shaders/atmosphereVertex.glsl?raw';
-import atmosphereFragmentShader from '../shaders/atmosphereFragment.glsl?raw';
+import vertexShader from '../../shaders/vertex.glsl?raw';
+import fragmentShader from '../../shaders/fragment.glsl?raw';
+import atmosphereVertexShader from '../../shaders/atmosphereVertex.glsl?raw';
+import atmosphereFragmentShader from '../../shaders/atmosphereFragment.glsl?raw';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
 import './PlanetInfo.css';

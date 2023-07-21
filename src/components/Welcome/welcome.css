@@ -1,0 +1,40 @@
+p {
+    color: white;
+}
+
+.welcome-overlay {
+    position: fixed;
+    width: 50%;
+    height: 35%;
+    transform: translate(50%, -50%);
+    border: solid white 2px;
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    padding: 13px;
+    border-radius: 8px;
+}
+
+.welcome-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-content > * {   
+    flex: 1; 
+}
+
+.welcome-headline {
+    padding-top: 20px;
+}
+
+.welcome-button {
+    margin-top: 15px;
+}
+
+.welcome-controls {
+    margin-top: 20px;
+    text-align: center;
+}

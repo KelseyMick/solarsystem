@@ -13,7 +13,8 @@ import atmosphereVertexShader from './shaders/atmosphereVertex.glsl?raw'
 import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl?raw'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer'
-import PlanetOverlay from './components/planetInfo';
+import PlanetOverlay from './components/PlanetInfo/PlanetInfo';
+import Welcome from './components/Welcome/Welcome'
 
 function App() {
   const clock = new THREE.Clock();
@@ -27,6 +28,7 @@ function App() {
 
   const [selectedPlanet, setSelectedPlanet] = useState(null);
   const [planetRenderer, setPlanetRenderer] = useState(null);
+  const [welcome, setWelcome] = useState(true);
 
   useEffect(() => {
     const scene = new THREE.Scene();
@@ -500,6 +502,10 @@ function App() {
     setSelectedPlanet(false);
   };
 
+  const handleCloseWelcome = () => {
+    setWelcome(false);
+  };
+
   const handleOpenOverlay = () => {
     setShowOverlay(true);
   };
@@ -507,6 +513,7 @@ function App() {
   return (
     <div className='App'>
       <canvas id='myThreeJsCanvas' />
+      {welcome && <Welcome onClose={handleCloseWelcome} />}
       {selectedPlanet && <PlanetOverlay planet={selectedPlanet} image={selectedPlanet.material.uniforms.globeTexture.value.source.data.currentSrc} onClose={handleCloseOverlay} />}
     </div>
   )
