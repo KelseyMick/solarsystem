@@ -304,40 +304,6 @@ function App() {
     // const divContainer = new CSS2DObject(div);
     // scene.add(divContainer);
 
-    // Line
-    const material = new THREE.LineBasicMaterial({
-      color: 0x0000ff
-    });
-    
-    const points = [];
-    points.push( new THREE.Vector3( sphere.position.x, sphere.position.y, sphere.position.z ) );
-    points.push( new THREE.Vector3( sphere.position.x + 10, sphere.position.y - 10, sphere.position.z ) );
-    points.push( new THREE.Vector3( sphere.position.x + 15, sphere.position.y - 10, sphere.position.z ) );
-    
-    const geometry = new THREE.BufferGeometry().setFromPoints( points );
-    
-    const line = new THREE.Line( geometry, material );
-    scene.add( line );
-
-    // scene.add(text_box)
-    const last_point = points.length - 1
-    // text_box.position.set(points[last_point].x, points[last_point].y, points[last_point].z);
-
-    // Text Box
-    const textBoxPoints = [];
-    textBoxPoints.push( new THREE.Vector3( points[last_point].x, points[last_point].y - 2.5, points[last_point].z ) );
-    textBoxPoints.push( new THREE.Vector3( points[last_point].x, points[last_point].y + 2.5, points[last_point].z ) );
-    textBoxPoints.push( new THREE.Vector3( points[last_point].x + 5, points[last_point].y + 2.5, points[last_point].z ) );
-    textBoxPoints.push( new THREE.Vector3( points[last_point].x + 5, points[last_point].y - 2.5, points[last_point].z ) );
-    textBoxPoints.push( new THREE.Vector3( points[last_point].x, points[last_point].y - 2.5, points[last_point].z ) );
-    
-    const textBoxGeometry = new THREE.BufferGeometry().setFromPoints( textBoxPoints );
-    
-    const textBoxLine = new THREE.Line( textBoxGeometry, material );
-    scene.add( textBoxLine );
-
-    cPointLabel.position.set(textBoxPoints[2].x - 2.5, textBoxPoints[2].y - 2.5, textBoxPoints[2].z);
-
     // const starGeometry = new THREE.BufferGeometry(5, 32)
     // const starMaterial = new THREE.MeshBasicMaterial({
     //   color: 0xffffff
