@@ -162,7 +162,7 @@ function App() {
     }
 
     // Create a planet
-    const createPlanet = function(name, radius, orbit, speed, img, hours) {
+    const createPlanet = function(name, radius, orbit, speed, img, hours, data) {
       const planet = new THREE.Mesh(new THREE.SphereGeometry(radius, 32, 16), new THREE.ShaderMaterial({
         vertexShader,
         fragmentShader,
@@ -176,7 +176,7 @@ function App() {
       // console.log(test)
 
       const geom = new THREE.SphereGeometry(radius, 32, 16);
-      var mat = new THREE.Mesh(new THREE.SphereGeometry(5, 50, 50), new THREE.ShaderMaterial({
+      const mat = new THREE.Mesh(new THREE.SphereGeometry(5, 50, 50), new THREE.ShaderMaterial({
         vertexShader,
         fragmentShader,
         uniforms: {
@@ -189,11 +189,12 @@ function App() {
       planet.userData.speed = speed;
       planet.name = name;
       planet.hours = hours;
+      planet.data = data;
   
-      var canvas = document.createElement('canvas');
+      const canvas = document.createElement('canvas');
       canvas.width = 256;
       canvas.height = 256;
-      var ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext("2d");
       ctx.font = "44pt Arial";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
@@ -203,23 +204,23 @@ function App() {
       ctx.fillText(name, 128, 46);
       
       //console.log(ctx);
-      var tex = new THREE.Texture(canvas);
+      let tex = new THREE.Texture(canvas);
       tex.needsUpdate = true;
-      var spriteMat = new THREE.SpriteMaterial({
+      let spriteMat = new THREE.SpriteMaterial({
         map: tex
       });
-      var sprite = new THREE.Sprite(spriteMat);
+      let sprite = new THREE.Sprite(spriteMat);
   
       planet.add(sprite);
       planets.push(planet);
       group.add(planet);
   
       //orbit
-      var shape = new THREE.Shape();
+      let shape = new THREE.Shape();
       shape.moveTo(orbit, 0);
       shape.absarc(0, 0, orbit, 0, 2 * Math.PI, false);
-      var spacedPoints = shape.getSpacedPoints(128);
-      var orbitGeom = new THREE.BufferGeometry().setFromPoints(spacedPoints); 
+      let spacedPoints = shape.getSpacedPoints(128);
+      let orbitGeom = new THREE.BufferGeometry().setFromPoints(spacedPoints); 
       orbitGeom.rotateX((-90 * Math.PI) / 180);
       var orbit = new THREE.Line(orbitGeom, new THREE.LineBasicMaterial({
         color: "white"
@@ -227,14 +228,70 @@ function App() {
       scene.add(orbit);
     };
 
-    createPlanet("Mercury", 1, 10, 5, '../src/assets/img/mercury.jpeg', 1408);
-    createPlanet("Venus", 1.5, 20, 3, '../src/assets/img/venus.jpeg', 5832);
-    createPlanet("Earth", 2, 30, 4, '../src/assets/img/earth.jpg', 24);
-    createPlanet("Mars", 1.8, 40, 2, '../src/assets/img/mars.jpeg', 25);
-    createPlanet("Jupiter", 3, 60, 0.8, '../src/assets/img/jupiter.jpeg', 10);
-    createPlanet("Saturn", 2.5, 70, 0.5, '../src/assets/img/saturn.jpeg', 11);
-    createPlanet("Uranus", 1.75, 80, 0.4, '../src/assets/img/uranus.jpeg', 17);
-    createPlanet("Neptune", 0.8, 90, 0.2, '../src/assets/img/neptune.jpeg', 16);
+    createPlanet("Mercury", 1, 10, 5, '../src/assets/img/mercury.jpeg', 1408,
+      {
+        'dayLength': '4226 hours',
+        'gravity': '3.7 m/s²',
+        'diameter': '4879 km',
+        'fact': 'Mercury is the smallest planet in our solar system – only slightly larger than Earth\'s Moon.'
+      }
+    );
+    createPlanet("Venus", 1.5, 20, 3, '../src/assets/img/venus.jpeg', 5832,
+      {
+        'dayLength': '2802 hours',
+        'gravity': '8.9 m/s²',
+        'diameter': '12,104 km',
+        'fact': 'Venus rotates very slowly on its axis – one day on Venus lasts 243 Earth days. The planet orbits the Sun faster than Earth, however, so one year on Venus takes only about 225 Earth days, making a Venusian day longer than its year!'
+      }
+    );
+    createPlanet("Earth", 2, 30, 4, '../src/assets/img/earth.jpg', 24,
+      {
+        'dayLength': '24 hours',
+        'gravity': '9.8 m/s²',
+        'diameter': '12,756 km',
+        'fact': 'Earth\'s atmosphere is 78 percent nitrogen, 21 percent oxygen and 1 percent other ingredients—the perfect balance to breathe and live.'
+      }
+    );
+    createPlanet("Mars", 1.8, 40, 2, '../src/assets/img/mars.jpeg', 25,
+      {
+        'dayLength': '24.7 hours',
+        'gravity': '3.7 m/s²',
+        'diameter': '6792 km',
+        'fact': 'Mars is known as the Red Planet because iron minerals in the Martian soil oxidize, or rust, causing the soil and atmosphere to look red.'
+      }
+    );
+    createPlanet("Jupiter", 3, 60, 0.8, '../src/assets/img/jupiter.jpeg', 10,
+      {
+        'dayLength': '9.9 hours',
+        'gravity': '23.1 m/s²',
+        'diameter': '142,984 km',
+        'fact': 'Eleven Earths could fit across Jupiter\'s equator. If Earth were the size of a grape, Jupiter would be the size of a basketball.'
+      }
+    );
+    createPlanet("Saturn", 2.5, 70, 0.5, '../src/assets/img/saturn.jpeg', 11,
+      {
+        'dayLength': '10.7 hours',
+        'gravity': '9 m/s²',
+        'diameter': '120,536 km',
+        'fact': 'Saturn is a gas-giant planet and therefore does not have a solid surface like Earth\'s. But it might have a solid core somewhere in there.'
+      }
+    );
+    createPlanet("Uranus", 1.75, 80, 0.4, '../src/assets/img/uranus.jpeg', 17,
+      {
+        'dayLength': '17.2 hours',
+        'gravity': '8.7 m/s²',
+        'diameter': '51,118 km',
+        'fact': 'Uranus has 27 known moons, and they are named after characters from the works of William Shakespeare and Alexander Pope.'
+      }
+    );
+    createPlanet("Neptune", 0.8, 90, 0.2, '../src/assets/img/neptune.jpeg', 16,
+      {
+        'dayLength': '16.1 hours',
+        'gravity': '11 m/s²',
+        'diameter': '49,528 km',
+        'fact': 'Neptune is an ice giant. Most of its mass is a hot, dense fluid of "icy" materials – water, methane and ammonia – above a small rocky core.'
+      }
+    );
 
     // Text
     const p = document.createElement('p');

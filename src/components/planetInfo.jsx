@@ -75,10 +75,14 @@ const PlanetOverlay = ({ planet, image, onClose }) => {
 
   return (
     <div className='planet-overlay-container'>
-        <canvas ref={canvasRef} className="planet-overlay-left" />
+        <div className='planet-left-container'>
+          <canvas ref={canvasRef} className="planet-overlay-left" />
+        </div>
         <div className="planet-overlay">
             <h2>{planet.name}</h2>
-            <h2>Cool information about it: </h2>
+            <h2>Length of one day: {planet.data.dayLength}</h2>
+            <h2>Gravity: {planet.data.gravity}. (Earth is 9.8 m/s²)</h2>
+            <h2>Interesting trivia: {planet.data.fact}</h2>
             <button onClick={handleClose}>Close</button>
         </div>
     </div>
