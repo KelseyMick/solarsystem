@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './welcome.css'
+import Dropdown from '../Dropdown/Dropdown'
 
 
 const Welcome = ({ onClose }) => {
@@ -24,6 +25,10 @@ const Welcome = ({ onClose }) => {
             <div>
                 <button className='welcome-button' onClick={handleClose}>Close</button>
             </div>
+            <Dropdown
+                title='Test title'
+                listItems={['By default, many browsers use padding-left to set the initial indentation. If you want to get rid of that, set padding-left: 0px;', 'two']}
+            />
         </div>
     </div>
   );

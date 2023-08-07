@@ -1,0 +1,25 @@
+.dd-wrapper {
+    width: 100%;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.dd-header {
+    display: flex;
+    cursor: pointer;
+}
+
+.arrow.down {
+    transform: rotate(90deg);
+    transition: transform 0.15s linear; 
+}
+
+.arrow.up {
+    transform: rotate(0deg);
+    transition: transform 0.15s linear; 
+}
+
+ul {
+    margin-left: 2.5rem;
+    list-style-type: square;
+  }
