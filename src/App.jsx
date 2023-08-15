@@ -235,7 +235,12 @@ function App() {
         'dayLength': '4226 hours',
         'gravity': '3.7 m/s²',
         'diameter': '4879 km',
-        'fact': 'Mercury is the smallest planet in our solar system – only slightly larger than Earth\'s Moon.'
+        'fact': [
+          'Mercury is the smallest planet in our solar system - only slightly larger than Earth\'s Moon.', 
+          'Mercury is the fastest planet in our solar system - traveling through space at nearly 29 miles (47 kilometers) per second. The closer a planet is to the Sun, the faster it travels. Since Mercury is the fastest planet and has the shortest distance to travel around the Sun, it has the shortest year of all the planets in our solar system – 88 days.',
+          'Mercury is a rocky planet, also known as a terrestrial planet. Mercury has a solid, cratered surface, much like the Earth\'s moon.',
+          'Mercury has no moons.'
+        ]
       }
     );
     createPlanet("Venus", 1.5, 20, 3, '../src/assets/img/venus.jpeg', 5832,
@@ -243,7 +248,12 @@ function App() {
         'dayLength': '2802 hours',
         'gravity': '8.9 m/s²',
         'diameter': '12,104 km',
-        'fact': 'Venus rotates very slowly on its axis – one day on Venus lasts 243 Earth days. The planet orbits the Sun faster than Earth, however, so one year on Venus takes only about 225 Earth days, making a Venusian day longer than its year!'
+        'fact': [
+          'Venus is often called "Earth\'s twin" because they\'re similar in size and structure, but Venus has extreme surface heat and a dense, toxic atmosphere. If the Sun were as tall as a typical front door, Earth and Venus would each be about the size of a nickel.',
+          'Venus rotates very slowly on its axis - one day on Venus lasts 243 Earth days. The planet orbits the Sun faster than Earth, however, so one year on Venus takes only about 225 Earth days, making a Venusian day longer than its year!',
+          'Venus has a solid surface covered in dome-like volcanoes, rifts, and mountains, with expansive volcanic plains and vast, ridged plateaus.',
+          'Venus was the first planet explored by a spacecraft and was intensely studied early in the history of space exploration. Venus was also the first planet whose surface was reached by a spacecraft from Earth. The intense heat means landers have only survived for a couple of hours.'
+        ]
       }
     );
     createPlanet("Earth", 2, 30, 4, '../src/assets/img/earth.jpg', 24,
@@ -251,7 +261,12 @@ function App() {
         'dayLength': '24 hours',
         'gravity': '9.8 m/s²',
         'diameter': '12,756 km',
-        'fact': 'Earth\'s atmosphere is 78 percent nitrogen, 21 percent oxygen and 1 percent other ingredients—the perfect balance to breathe and live.'
+        'fact': [
+          'Earth\'s atmosphere is 78 percent nitrogen, 21 percent oxygen and 1 percent other ingredients—the perfect balance to breathe and live.',
+          'Our atmosphere protects us from incoming meteoroids, most of which break up in our atmosphere before they can strike the surface.',
+          'Many orbiting spacecraft study the Earth from above as a whole system—observing the atmosphere, ocean, glaciers, and the solid earth.',
+          'If the Sun were as tall as a typical front door, Earth would be the size of a nickel.'
+        ]
       }
     );
     createPlanet("Mars", 1.8, 40, 2, '../src/assets/img/mars.jpeg', 25,
@@ -259,7 +274,12 @@ function App() {
         'dayLength': '24.7 hours',
         'gravity': '3.7 m/s²',
         'diameter': '6792 km',
-        'fact': 'Mars is known as the Red Planet because iron minerals in the Martian soil oxidize, or rust, causing the soil and atmosphere to look red.'
+        'fact': [
+          'Mars is known as the Red Planet because iron minerals in the Martian soil oxidize, or rust, causing the soil and atmosphere to look red.',
+          'Several missions have visited this planet, from flybys and orbiters to rovers on the surface.The first true Mars mission success was the Mariner 4 flyby in 1965.',
+          'Mars has two moons named Phobos and Deimos.',
+          'Mars is known as the Red Planet because iron minerals in the Martian soil oxidize, or rust, causing the soil and atmosphere to look red.'
+        ]
       }
     );
     createPlanet("Jupiter", 3, 60, 0.8, '../src/assets/img/jupiter.jpeg', 10,
@@ -267,7 +287,12 @@ function App() {
         'dayLength': '9.9 hours',
         'gravity': '23.1 m/s²',
         'diameter': '142,984 km',
-        'fact': 'Eleven Earths could fit across Jupiter\'s equator. If Earth were the size of a grape, Jupiter would be the size of a basketball.'
+        'fact': [
+          'Eleven Earths could fit across Jupiter\'s equator. If Earth were the size of a grape, Jupiter would be the size of a basketball.',
+          'Jupiter rotates once about every 10 hours (a Jovian day), but takes about 12 Earth years to complete one orbit of the Sun (a Jovian year).',
+          'Jupiter is a gas giant and so lacks an Earth-like surface. If it has a solid inner core at all, it\'s likely only about the size of Earth.',
+          'Nine spacecraft have visited Jupiter. Seven flew by and two have orbited the gas giant. Juno, the most recent, arrived at Jupiter in 2016.'
+        ]
       }
     );
     createPlanet("Saturn", 2.5, 70, 0.5, '../src/assets/img/saturn.jpeg', 11,
@@ -275,7 +300,12 @@ function App() {
         'dayLength': '10.7 hours',
         'gravity': '9 m/s²',
         'diameter': '120,536 km',
-        'fact': 'Saturn is a gas-giant planet and therefore does not have a solid surface like Earth\'s. But it might have a solid core somewhere in there.'
+        'fact': [
+          'Saturn is a gas-giant planet and therefore does not have a solid surface like Earth\'s. But it might have a solid core somewhere in there.',
+          'Saturn has the most spectacular ring system, with seven rings and several gaps and divisions between them.',
+          'Saturn has 53 known moons with an additional 29 moons awaiting confirmation of their discovery—that is a total of 82 moons.',
+          'Few missions have visited Saturn: Pioneer 11 and Voyagers 1 and 2 flew by; But Cassini orbited Saturn 294 times from 2004 to 2017.'
+        ]
       }
     );
     createPlanet("Uranus", 1.75, 80, 0.4, '../src/assets/img/uranus.jpeg', 17,
@@ -283,7 +313,12 @@ function App() {
         'dayLength': '17.2 hours',
         'gravity': '8.7 m/s²',
         'diameter': '51,118 km',
-        'fact': 'Uranus has 27 known moons, and they are named after characters from the works of William Shakespeare and Alexander Pope.'
+        'fact': [
+          'Uranus has 27 known moons, and they are named after characters from the works of William Shakespeare and Alexander Pope.',
+          'Like Venus, Uranus rotates east to west. But Uranus is unique in that it rotates on its side.',
+          'Voyager 2 is the only spacecraft to fly by Uranus. No spacecraft has orbited this distant planet to study it at length and up close.',
+          'Uranus is an ice giant. Most of its mass is a hot, dense fluid of "icy" materials - water, methane and ammonia - above a small rocky core.'
+        ]
       }
     );
     createPlanet("Neptune", 0.8, 90, 0.2, '../src/assets/img/neptune.jpeg', 16,
@@ -291,7 +326,12 @@ function App() {
         'dayLength': '16.1 hours',
         'gravity': '11 m/s²',
         'diameter': '49,528 km',
-        'fact': 'Neptune is an ice giant. Most of its mass is a hot, dense fluid of "icy" materials – water, methane and ammonia – above a small rocky core.'
+        'fact': [
+          'Neptune is an ice giant. Most of its mass is a hot, dense fluid of "icy" materials - water, methane and ammonia - above a small rocky core.',
+          'Neptune takes about 16 hours to rotate once (a Neptunian day), and about 165 Earth years to orbit the sun (a Neptunian year).',
+          'Because of dwarf planet Pluto\'s elliptical orbit, Pluto is sometimes closer to the Sun (and us) than Neptune is.',
+          'Neptune\'s atmosphere is made up mostly of molecular hydrogen, atomic helium and methane.'
+        ]
       }
     );
 

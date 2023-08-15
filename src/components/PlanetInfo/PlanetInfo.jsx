@@ -8,6 +8,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
 import './PlanetInfo.css';
 import CloseIcon from '@mui/icons-material/Close';
+import Dropdown from '../Dropdown/Dropdown'
 
 const PlanetOverlay = ({ planet, image, onClose }) => {
   const canvasRef = useRef(null);
@@ -87,7 +88,13 @@ const PlanetOverlay = ({ planet, image, onClose }) => {
             <h2>{planet.name}</h2>
             <h2>Length of one day: {planet.data.dayLength}</h2>
             <h2>Gravity: {planet.data.gravity}. (Earth is 9.8 m/s²)</h2>
-            <h2>Interesting trivia: {planet.data.fact}</h2>
+            <Dropdown
+                title='Interesting trivia'
+                listItems={planet.data.fact.map((fact) => {
+                  return fact;
+                })}
+            />
+            {/* <h2>Interesting trivia: {planet.data.fact}</h2> */}
             <button onClick={handleClose}>Close</button>
         </div>
     </div>
