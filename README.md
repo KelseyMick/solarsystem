@@ -15,7 +15,7 @@ Welcome to the Solar System Explorer project! This interactive application allow
 1. Clone this repository to your local machine using:
 
    ```bash
-   git clone https://github.com/your-username/solarsystem.git
+   git clone https://github.com/KelseyMick/solarsystem.git
    ```
 
 2. Navigate to the project directory:
