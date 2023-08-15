@@ -35,18 +35,20 @@ Welcome to the Solar System Explorer project! This interactive application allow
 4. Start the development server:
 
    ```bash
-   npm start
+   npm run dev
    # or
-   yarn start
+   yarn run dev
    ```
 
-5. Open your web browser and navigate to `http://localhost:3000` to explore the solar system!
+5. Open your web browser and navigate to `http://localhost:5173` (terminal will show the localhost link as well) to explore the solar system!
 
 ## Technologies Used
 
 - **React:** The user interface and components are built using React, making it easy to manage the application's state and components.
 
 - **Three.js:** This library provides the core functionality for creating 3D graphics in the browser. It's used to render the planets and create their realistic visual effects.
+
+- **Vite:** The development build tool that provides fast and efficient development experience with instant server startup.
 
 ## Credits
 
