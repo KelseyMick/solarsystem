@@ -125,7 +125,7 @@ function App() {
       fragmentShader,
       uniforms: {
         globeTexture: {
-          value: new THREE.TextureLoader().load('../src/assets/img/sun.jpeg')
+          value: new THREE.TextureLoader().load('../assets/img/sun.jpeg')
         }
       }
     }));   
@@ -230,7 +230,7 @@ function App() {
       scene.add(orbit);
     };
 
-    createPlanet("Mercury", 1, 10, 5, '../src/assets/img/mercury.jpeg', 1408,
+    createPlanet("Mercury", 1, 10, 5, '../assets/img/mercury.jpeg', 1408,
       {
         'dayLength': '4226 hours',
         'gravity': '3.7 m/s²',
@@ -243,7 +243,7 @@ function App() {
         ]
       }
     );
-    createPlanet("Venus", 1.5, 20, 3, '../src/assets/img/venus.jpeg', 5832,
+    createPlanet("Venus", 1.5, 20, 3, '../assets/img/venus.jpeg', 5832,
       {
         'dayLength': '2802 hours',
         'gravity': '8.9 m/s²',
@@ -256,7 +256,7 @@ function App() {
         ]
       }
     );
-    createPlanet("Earth", 2, 30, 4, '../src/assets/img/earth.jpg', 24,
+    createPlanet("Earth", 2, 30, 4, '../assets/img/earth.jpg', 24,
       {
         'dayLength': '24 hours',
         'gravity': '9.8 m/s²',
@@ -269,7 +269,7 @@ function App() {
         ]
       }
     );
-    createPlanet("Mars", 1.8, 40, 2, '../src/assets/img/mars.jpeg', 25,
+    createPlanet("Mars", 1.8, 40, 2, '../assets/img/mars.jpeg', 25,
       {
         'dayLength': '24.7 hours',
         'gravity': '3.7 m/s²',
@@ -282,7 +282,7 @@ function App() {
         ]
       }
     );
-    createPlanet("Jupiter", 3, 60, 0.8, '../src/assets/img/jupiter.jpeg', 10,
+    createPlanet("Jupiter", 3, 60, 0.8, '../assets/img/jupiter.jpeg', 10,
       {
         'dayLength': '9.9 hours',
         'gravity': '23.1 m/s²',
@@ -295,7 +295,7 @@ function App() {
         ]
       }
     );
-    createPlanet("Saturn", 2.5, 70, 0.5, '../src/assets/img/saturn.jpeg', 11,
+    createPlanet("Saturn", 2.5, 70, 0.5, './assets/img/saturn.jpeg', 11,
       {
         'dayLength': '10.7 hours',
         'gravity': '9 m/s²',
@@ -308,7 +308,7 @@ function App() {
         ]
       }
     );
-    createPlanet("Uranus", 1.75, 80, 0.4, '../src/assets/img/uranus.jpeg', 17,
+    createPlanet("Uranus", 1.75, 80, 0.4, '../assets/img/uranus.jpeg', 17,
       {
         'dayLength': '17.2 hours',
         'gravity': '8.7 m/s²',
@@ -321,7 +321,7 @@ function App() {
         ]
       }
     );
-    createPlanet("Neptune", 0.8, 90, 0.2, '../src/assets/img/neptune.jpeg', 16,
+    createPlanet("Neptune", 0.8, 90, 0.2, '../assets/img/neptune.jpeg', 16,
       {
         'dayLength': '16.1 hours',
         'gravity': '11 m/s²',
