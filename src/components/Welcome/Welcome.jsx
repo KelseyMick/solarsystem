@@ -21,6 +21,7 @@ const Welcome = ({ onClose }) => {
                 <h2>Controls:</h2>
                 <h3>Use the mouse wheel to zoom in and out.</h3>
                 <h3>Hold down the mouse button and drag to move the camera.</h3>
+                <h3>Click on a planet to view more information about it.</h3>
             </div>
             <div>
                 <button className='welcome-button' onClick={handleClose}>Close</button>
