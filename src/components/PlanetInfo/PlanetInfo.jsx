@@ -94,8 +94,6 @@ const PlanetOverlay = ({ planet, image, onClose }) => {
                   return fact;
                 })}
             />
-            {/* <h2>Interesting trivia: {planet.data.fact}</h2> */}
-            <button onClick={handleClose}>Close</button>
         </div>
     </div>
   );
